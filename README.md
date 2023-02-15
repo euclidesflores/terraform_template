@@ -25,15 +25,30 @@ The initial structure of a root module is quite simple and is cloud agnostic:
 
 ```
 
+If you are going to work with more than one provider/modules, structure your project placing each provider in subdirectories with its corresponding structure:
+
+``` bash
+.
+├── aks
+│   ├── .terraform.lock.hcl
+│   └── main.tf
+├── eks
+│   ├── .terraform.lock.hcl
+│   └── main.tf
+└── gke
+    ├── .terraform.lock.hcl
+    └── main.tf
+```
+
 ## .github/CODEOWNERS
 
 Specifies who is responsible for the module
 
 
-
 ## .gitignore
 Use the .gitignore file to prevent committing files containing sensitive information, such as development state and tfvars files.
 
+Refer to this [gitignore template for Terraform](https://github.com/github/gitignore/blob/main/Terraform.gitignore) to know what to ignore.
 
 
 ## .terraform.lock.hcl
@@ -56,7 +71,7 @@ Put helper scripts that aren't called by Terraform in this directory. Document h
 
 
 
-## scripts/
+## scripts/ 
 Avoid using custom scripts, if you need create custom scripts that are going to be called or referenced by Terraform place them in the scripts/ directory.
 
 
